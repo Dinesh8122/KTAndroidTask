@@ -44,4 +44,5 @@ class WelcomeScreen : AppCompatActivity() {
         }
         handler.postDelayed(runnable, 2000)
     }
+
 }

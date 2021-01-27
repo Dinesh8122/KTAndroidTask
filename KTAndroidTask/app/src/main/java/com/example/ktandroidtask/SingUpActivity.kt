@@ -85,7 +85,11 @@ class SingUpActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             cancel_button -> {
-                readEmployeeRecords()
+                if (signUp_button.text.toString() == getString(R.string.login)) {
+                    finish()
+                }else{
+                    showLoginLayout()
+                }
             }
             singUp_text -> {
                 if (singUp_text.text.toString() == getString(R.string.login)) {

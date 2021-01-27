@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ktandroidtask.RealmInterface.UserLocationModel
 import com.example.ktandroidtask.pojoModels.UpdateLocation
 import com.example.ktandroidtask.pojoModels.UserLocation
+import com.example.ktandroidtask.services.GpsPrompt
 import com.example.ktandroidtask.services.LocationUpdateService
 import com.example.ktandroidtask.sharedPreference.SharedPreference
 import com.google.android.gms.location.*
@@ -154,12 +155,9 @@ class Home : AppCompatActivity(),
                 } else {
 
                     if (!isLocationEnabled()) {
-                        val bundle = Bundle()
-//                        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Home screen")
-//                        mFirebaseAnalytics.logEvent("NO_GPS", bundle)
 
-//                        val intent = Intent(applicationContext, GpsPrompt::class.java)
-//                        startActivityForResult(intent, 1)
+                        val intent = Intent(applicationContext, GpsPrompt::class.java)
+                        startActivityForResult(intent, 1)
                         Log.d("Home", "onCreate: Location Services Is Disabled")
                     }
                 }
@@ -184,6 +182,8 @@ class Home : AppCompatActivity(),
             }
         }
     }
+
+
 
     fun getAllLocation(){
         val response = userEmailId?.let { userLocationModel.getAllUserLocation(realm, it) }
@@ -261,7 +261,8 @@ class Home : AppCompatActivity(),
                 .setDeniedMessage("Please enable your location permissions to continue using KT android task.You can turn on permissions in  [App Settings] > [Permission]\")")
                 .setPermissions(
                         android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                        android.Manifest.permission.ACCESS_FINE_LOCATION
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 
                 )
                 .check();

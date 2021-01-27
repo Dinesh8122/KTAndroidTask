@@ -104,7 +104,7 @@ class LocationUpdateService : Service() {
                     .setOngoing(true)
                     .setContentIntent(activityPendingIntent)
                     .setPriority(Notification.PRIORITY_HIGH)
-                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setSmallIcon(R.drawable.ic_no_gps)
                     .setWhen(System.currentTimeMillis())
             // Set the Channel ID for Android O.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
