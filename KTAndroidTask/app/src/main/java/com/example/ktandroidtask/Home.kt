@@ -339,6 +339,7 @@ class Home : AppCompatActivity(),
 
         Log.i("Home", "showMarker (line 81): ")
         try {
+            isShowLiveTracking = false
             locationBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             val geoCoder = Geocoder(this)
                 val addresses = geoCoder.getFromLocation(
